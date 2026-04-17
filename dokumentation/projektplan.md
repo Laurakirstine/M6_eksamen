@@ -24,6 +24,7 @@ Foruden denne projektplan indgår også følgende dokumenter til overblik, samar
   + Use Case
   + Activity
   + Class
+
 Rollebeskrivelse
 2 designdokumenter
 Retrospektive refelksioner
