@@ -28,5 +28,6 @@ Foruden denne projektplan indgår også følgende dokumenter til overblik, samar
   Rollebeskrivelse  
   2 designdokumenter  
   Retrospektive refelksioner  
-  Roadmap (i GitHub)  KanBan board (i GitHub)
+  Roadmap (i GitHub)  
+  KanBan board (i GitHub)
 
