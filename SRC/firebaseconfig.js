@@ -41,24 +41,25 @@ getDocs(colRef)
     
 /**
  * Save a New Task in Firestore
- * @param {string} title the title of the Task
- * @param {string} description the description of the Task
+ * @param {string} opgavenavn the name of the Task
+ * @param {string} beskrivelse the description of the Task
+ * @param {Date} deadline the deadline of the Task
  */
-export const saveTask = (title, description) =>
-  addDoc(collection(db, "tasks"), { title, description });
+export const saveTask = (opgavenavn, beskrivelse, deadline) =>
+  addDoc(collection(db, "opgaver"), { opgavenavn, beskrivelse, deadline: new Date(deadline), status: false });
 
 export const onGetTasks = (callback) =>
-  onSnapshot(collection(db, "tasks"), callback);
+  onSnapshot(collection(db, "opgaver"), callback);
 
 /**
  *
  * @param {string} id Task ID
  */
-export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
+export const deleteTask = (id) => deleteDoc(doc(db, "opgaver", id));
 
-export const getTask = (id) => getDoc(doc(db, "tasks", id));
+export const getTask = (id) => getDoc(doc(db, "opgaver", id));
 
 export const updateTask = (id, newFields) =>
-  updateDoc(doc(db, "tasks", id), newFields);
+  updateDoc(doc(db, "opgaver", id), newFields);
 
-export const getTasks = () => getDocs(collection(db, "tasks"));
+export const getTasks = () => getDocs(collection(db, "opgaver"));
