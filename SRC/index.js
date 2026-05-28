@@ -1,14 +1,3 @@
-import { 
-    onGetTasks, 
-    saveTask, 
-    deleteTask, 
-    getTask,
-    updateTask, 
-} from "./firebaseconfig.js";
- 
-
-
-
 //Henter navigationsmenu
 fetch("../navigationsmenu.html")
   .then(response => response.text())
@@ -20,25 +9,37 @@ fetch("../navigationsmenu.html")
   })
   .catch(error => console.error("Fejl ved indlæsning af menu:", error));
 
+//Henter Firebase funktioner
+import { 
+    onGetTasks, 
+    saveTask, 
+    deleteTask, 
+    getTask,
+    updateTask, 
+} from "./firebaseconfig.js";
+ 
+//Funktion til at opdatere status på en opgave
+const updateTaskStatus = (id, status) => {
+    updateTask(id, { status });
+};
 
-  console.log("JS loaded");
-
-  // Håndtering af tilføj opgaver til tilføj_opgave.html
+// Håndtering af tilføj opgaver til tilføj_opgave.html
 if (document.querySelector('h1') && document.querySelector('h1').textContent === 'Tilføj opgave') {
     const opgaveForm = document.getElementById('opgaveForm');
+
     opgaveForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const titel = document.getElementById('opgaveTitel').value;
         const beskrivelse = document.getElementById('opgaveBeskrivelse').value;
         const deadline = document.getElementById('opgaveDeadline').value;
-        saveTask(titel, beskrivelse, deadline);
+        saveTask(titel, beskrivelse, deadline, false);
         opgaveForm.reset();
         alert('Opgave tilføjet!');
     });
 }
 
-  // hent og vis opgaver på opgaveplanner siden
-if (document.querySelector('h1') && document.querySelector('h1').textContent === 'Opgaveplanner') {
+// hent og vis opgaver på opgaveplanner siden
+if (document.getElementById('tasks-list')) {
     const tasksList = document.getElementById('tasks-list');
     
     // Funktion til render tasks
@@ -97,10 +98,24 @@ if (document.querySelector('h1') && document.querySelector('h1').textContent ===
         });
     };
     
-    // hent updateringer til opgaver
+    //Hent opdatering af opgavestatus
     onGetTasks((snapshot) => {
         console.log("onGetTasks triggered, snapshot docs:", snapshot.docs.length); // Debug log
-        const tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        let tasks = snapshot.docs.map(doc => ({ 
+            id: doc.id, ...doc.data() 
+        }));
+
+        if ( 
+            document.querySelector('h1') && document.querySelector('h1').textContent === 'Igangværende opgaver'
+        ) {
+            tasks = tasks.filter(task => task.status === false);
+        }
+
+        if ( 
+            document.querySelector('h1') && document.querySelector('h1').textContent === 'Afsluttede opgaver'
+        ) {
+            tasks = tasks.filter(task => task.status === true);
+        }
         renderTasks(tasks);
     });
 }

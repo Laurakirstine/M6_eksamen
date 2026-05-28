@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+// Importerede funktioner fra firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import {
   getFirestore,
@@ -15,7 +15,7 @@ import {
 
 
 
-// Your web app's Firebase configuration
+//Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBlKdlqTVRtGWwu_JzuHhfCe5C8wiBbA7k",
   authDomain: "m6firebase-346b7.firebaseapp.com",
@@ -45,8 +45,14 @@ getDocs(colRef)
  * @param {string} beskrivelse the description of the Task
  * @param {Date} deadline the deadline of the Task
  */
-export const saveTask = (opgavenavn, beskrivelse, deadline) =>
-  addDoc(collection(db, "opgaver"), { opgavenavn, beskrivelse, deadline: new Date(deadline), status: false });
+export const saveTask = (opgavenavn, beskrivelse, deadline, status) =>
+  addDoc(collection(db, "opgaver"), 
+    { 
+      opgavenavn, 
+      beskrivelse, 
+      deadline: new Date(deadline), 
+      status 
+    });
 
 export const onGetTasks = (callback) =>
   onSnapshot(collection(db, "opgaver"), callback);
@@ -62,4 +68,4 @@ export const getTask = (id) => getDoc(doc(db, "opgaver", id));
 export const updateTask = (id, newFields) =>
   updateDoc(doc(db, "opgaver", id), newFields);
 
-export const getTasks = () => getDocs(collection(db, "opgaver"));
+
