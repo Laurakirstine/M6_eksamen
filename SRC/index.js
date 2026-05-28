@@ -41,7 +41,37 @@ if (document.querySelector('h1') && document.querySelector('h1').textContent ===
 // hent og vis opgaver på opgaveplanner siden
 if (document.getElementById('tasks-list')) {
     const tasksList = document.getElementById('tasks-list');
+    let currentTasks = []; // Store tasks to apply sorting when dropdown changes
     
+    // Sorting functions
+    const sortTasks = (tasks, sortType) => {
+        const tasksCopy = [...tasks]; // Create a copy to avoid mutating original
+    
+        switch(sortType) {
+            case 'alphabetical':
+                return tasksCopy.sort((a, b) => 
+                    (a.opgavenavn || '').localeCompare(b.opgavenavn || '')
+                );
+        
+            case 'date-asc':
+                return tasksCopy.sort((a, b) => {
+                    const dateA = a.deadline?.seconds || Infinity;
+                    const dateB = b.deadline?.seconds || Infinity;
+                    return dateA - dateB;
+                });
+        
+            case 'date-desc':
+                return tasksCopy.sort((a, b) => {
+                    const dateA = a.deadline?.seconds || 0;
+                    const dateB = b.deadline?.seconds || 0;
+                    return dateB - dateA;
+                });
+        
+            default:
+                return tasksCopy;
+        }
+    };
+
     // Funktion til render tasks
     const renderTasks = (tasks) => {
        /* console.log("Rendering tasks:", tasks); / Debug log */
@@ -97,6 +127,18 @@ if (document.getElementById('tasks-list')) {
             });
         });
     };
+
+    // Handle sort dropdown - moved OUTSIDE renderTasks
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (e) => {
+            const sortType = e.target.value;
+            localStorage.setItem('taskSortPreference', sortType);
+            // Re-render with new sort order
+            const sortedTasks = sortTasks(currentTasks, sortType);
+            renderTasks(sortedTasks);
+        });
+    }
     
     //Hent opdatering af opgavestatus
     onGetTasks((snapshot) => {
@@ -116,6 +158,11 @@ if (document.getElementById('tasks-list')) {
         ) {
             tasks = tasks.filter(task => task.status === true);
         }
+
+        currentTasks = tasks; // Store the filtered tasks
+        const sortPreference = document.getElementById('sort-select')?.value || 'none';
+        tasks = sortTasks(tasks, sortPreference);
+
         renderTasks(tasks);
     });
 }

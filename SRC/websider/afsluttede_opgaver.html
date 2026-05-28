@@ -13,6 +13,17 @@
     <h1>Afsluttede opgaver</h1>
     <h2>Her kan du se en liste over alle dine afsluttede opgaver</h2>
 
+    <!-- Sort buttons -->
+    <div class="sort-container">
+        <label for="sort-select">Sorter efter:</label>
+        <select id="sort-select">
+            <option value="none">Ingen sortering</option>
+            <option value="alphabetical">Alfabetisk</option>
+            <option value="date-asc">Dato (tidligste først)</option>
+            <option value="date-desc">Dato (seneste først)</option>
+        </select>
+    </div>
+
     <!-- Afsluttede opgaver vil blive indsat her -->
         <div id="tasks-list"></div>
 </body>
