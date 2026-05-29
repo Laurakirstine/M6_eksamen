@@ -18,13 +18,13 @@ Opgaveplanner indeholder følgende funktioner:
 + Markér opgaver som færdige eller igangværende
 + Slet opgaver
 + Naviger mellem:
-++ Alle opgaver
-++ Igangværende opgaver
-++ Afsluttede opgaver
+   - Alle opgaver
+   - Igangværende opgaver
+   - Afsluttede opgaver
 + Sortering af opgaver
-++ Alfabetisk
-++ Dato (stigende)
-++ Dato (faldende)
+   - Alfabetisk
+   - Dato (stigende)
+   - Dato (faldende)
 + Realtidsopdatering og lagring via Google Firestore
 
 ## Installering
