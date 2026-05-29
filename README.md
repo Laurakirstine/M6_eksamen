@@ -51,9 +51,9 @@ Applikationen har en navigationsmenu med fire hovedsider:
 
 1. Klik på "Tilføj Opgave" i navigationsmenu
 2. Udfyld følgende felter:
-   - **Titel**: Opgavens navn
-   - **Beskrivelse**: Beskrivelse af opgaven
-   - **Deadline**: Vælg en deadline-dato
+   - Titel: Opgavens navn
+   - Beskrivelse: Beskrivelse af opgaven
+   - Deadline: Vælg en deadline-dato
 3. Klik "Tilføj opgave"
 4. Du vil se en bekræftelsesmeddelelse
 5. Opgaven tilføjes i databasen
@@ -62,10 +62,10 @@ Applikationen har en navigationsmenu med fire hovedsider:
 
 1. Gå til "Opgaveplanner" for at se alle opgaver
 2. Brug sorteringsmuligheder:
-   - **Ingen sortering**: Opgaver i oprettelses rækkefølge
-   - **Alfabetisk**: Sorteret efter titel
-   - **Dato (tidligste først)**: Sorteret efter deadline
-   - **Dato (seneste først)**: Sorteret efter deadline
+   - Ingen sortering: Opgaver i oprettelses rækkefølge
+   - Alfabetisk: Sorteret efter titel
+   - Dato (tidligste først): Sorteret efter deadline
+   - Dato (seneste først): Sorteret efter deadline
 
 ### Opdater en opgaves status
 
@@ -80,8 +80,8 @@ Applikationen har en navigationsmenu med fire hovedsider:
 
 ### Filtrer opgaver
 
-- **Igangværende Opgaver**: Viser kun opgaver, der ikke er markeret som fuldført
-- **Afsluttede Opgaver**: Viser kun opgaver, der er markeret som fuldført
+- Igangværende Opgaver: Viser kun opgaver, der ikke er markeret som fuldført
+- Afsluttede Opgaver: Viser kun opgaver, der er markeret som fuldført
 
 ## Forfattere
 
