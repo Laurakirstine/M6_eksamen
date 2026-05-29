@@ -14,7 +14,7 @@ Grundlaget for at oprette opgaverne i en database, er så systemet på sigt vill
 
 ## Styring af projektet
 
-Projektet planlægges og styres gennem gitHub, hvor begge gruppens medlemmer kan tilgå respository´et og arbejde gennem commit og branches. Derudover bruges gitHubs ‘projects’ til opgavestyring gennem et kanban board. Opgaver der skal udføres oprettes i ‘Issues’, så de kan integreres med kanban-boardet. Derudover er værktøjet Roadmap, for en detaljeret tidslinje for opgavestyring.
+Projektet planlægges og styres gennem gitHub, hvor begge gruppens medlemmer kan tilgå respository´et og arbejde gennem commit og branches. Derudover bruges gitHubs ‘projects’ til opgavestyring gennem et kanban board. Opgaver der skal udføres oprettes i ‘Issues’, så de kan integreres med kanban-boardet. Derudover bruges værktøjet Roadmap, for en detaljeret tidslinje for opgavestyring.
 
 ## Øvrig dokumentation
 
