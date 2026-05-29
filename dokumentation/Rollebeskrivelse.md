@@ -10,6 +10,8 @@ Denne rollebeskrivelse er derfor lavet efter færdiggørelsen af projektet for a
 
 + Opsætning af projektstyrring (Fælles) 
 + Opsætning af html strukturen (Laura)
++ Udarbejdelse af UML-diagrammer (Fælles)
++ Udarbejdelse af dokumentation (Fælles)
 + Kodning af navigationsmenu (Laura)
 + Kodning af side 1 - Tilføj opgave (Laura)
 + Opsætning af firebase og konfigurering (Fælles)
