@@ -72,7 +72,7 @@ form {
     gap: 15px;
 }
 
-/* Inputs og textarea */
+/* Inputs og tekst felt */
 input, textarea {
     padding: 10px;
     border: 1px solid #ccc;
@@ -88,7 +88,7 @@ input:focus, textarea:focus {
     border-color: #3d2408;
 }
 
-/* Textarea størrelse */
+/* Tekst felt størrelse */
 textarea {
     resize: vertical;
     min-height: 80px;
@@ -111,7 +111,7 @@ button:hover {
     background-color: #3d2408;
 }
 
-/*Tabellen i opgaveplannner*/
+/*listen med opgaver*/
 
 #tasks-list {
     margin-top: 20px;
@@ -136,18 +136,19 @@ button:hover {
     text-decoration: line-through;
 }
 
+/*Sorterings menuen*/
 .sort-container {
     margin: 20px 0;
     padding: 20px;
-    background: rgb(230, 213, 223);  /* Match the form background */
+    background: rgb(230, 213, 223);
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* Match the form shadow */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .sort-container label {
     margin-right: 10px;
     font-weight: bold;
-    color: #3d2408;  /* Match heading color */
+    color: #3d2408;  
 }
 
 .sort-container select {
@@ -162,5 +163,5 @@ button:hover {
 
 .sort-container select:focus {
     outline: none;
-    border-color: #3d2408;  /* Match input focus effect */
+    border-color: #3d2408;  
 }
