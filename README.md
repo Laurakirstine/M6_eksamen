@@ -1,6 +1,15 @@
-# M6_eksamen
+# Navn: Opgaveplanner
+
+## Beskrivelse
 Dette er Nanna og Lauras projekt til M6 eksamen
-Vores projekt er en opgaveplanner som er en webapplikation udviklet til at oprette og holde styr på opgaver.
+Vores projekt er en opgaveplanner som er en webapplikation udviklet til at oprette og holde styr på opgaver. Systemet anvender Google Firebase Firestore som database til datalagring og real-time synkronisering.
+
+## Indhold
+Opgaveplanner er opbygget af
++ 5 html filer
++ 2 JavaScript filer
++ 1 CSS fil
++ 1 Google Firestore database
 
 Opgaveplanner indeholder følgende funktioner:
 + Opret nye opgaver
@@ -17,36 +26,64 @@ Opgaveplanner indeholder følgende funktioner:
 ++ Dato (faldende)
 + Realtidsopdatering og lagring via Google Firestore
 
-Opgaveplanner er opbygget af
-+ 5 html filer
-+ 2 JavaScript filer
-+ 1 CSS fil
-+ 1 Google Firestore database 
+## Installering
++ Klon repositoriet
++ Installer udvidelsen "Live Server" i VS Code
++ Højreklik på index.html eller opgaveplanner.html i mappen SRC/websider/
++ Vælg "Open with Live Server"
 
-Nanna uddyber nedenstående/ skriver readme lækker 
+### Database integration
+Applikationen forbinder til en Firebase Firestore-database. Konfigurationen findes i `SRC/firebaseconfig.js`
 
-HER KØRER DET
-Opgaveplanner startes med live server
+## Brug
 
-HOW TO 
-Forudsætninger
-For at kunne køre projektet skal brugeren have:
-Adgang til GitHub-repositoriet
-Adgang til det tilhørende Firebase-projekt
-Visual Studio Code installeret
-Live Server-udvidelsen installeret i Visual Studio Code
-Opsætning
-Klon repositoriet:
-git clone [repository-url]
-Åbn projektet i Visual Studio Code.
-Kontroller at Firebase-konfigurationen i firebaseconfig.js peger på det tilhørende Firebase-projekt.
-Start projektet ved hjælp af Live Server.
-Åbn applikationen i browseren.
-Database
-Projektet benytter Firebase Firestore til lagring af opgaver. Alle nødvendige collections og regler er allerede oprettet i det tilhørende Firebase-projekt.
+### Navigering
 
+Applikationen har en navigationsmenu med fire hovedsider:
 
+1. **Opgaveplanner** - Oversigt over alle dine opgaver med sorteringsindstillinger
+2. **Tilføj Opgave** - Formular til at oprette nye opgaver
+3. **Igangværende Opgaver** - Viser kun opgaver, der ikke er afsluttede
+4. **Afsluttede Opgaver** - Viser kun afsluttede opgaver
 
+### Opret en ny opgave
 
+1. Klik på "Tilføj Opgave" i navigationsmenu
+2. Udfyld følgende felter:
+   - **Titel**: Opgavens navn
+   - **Beskrivelse**: Beskrivelse af opgaven
+   - **Deadline**: Vælg en deadline-dato
+3. Klik "Tilføj opgave"
+4. Du vil se en bekræftelsesmeddelelse
+5. Opgaven tilføjes i databasen
+
+### Se dine opgaver
+
+1. Gå til "Opgaveplanner" for at se alle opgaver
+2. Brug sorteringsmuligheder:
+   - **Ingen sortering**: Opgaver i oprettelses rækkefølge
+   - **Alfabetisk**: Sorteret efter titel
+   - **Dato (tidligste først)**: Sorteret efter deadline
+   - **Dato (seneste først)**: Sorteret efter deadline
+
+### Opdater en opgaves status
+
+- Klik på en opgaves afkrydsningsfelt i listen for at markere den som fuldført/ikke-fuldført
+- Opgavens status opdateres straks i databasen
+
+### Slet en opgave
+
+- Find opgaven i listen
+- Klik på slet-knappen
+- Opgaven fjernes permanent
+
+### Filtrer opgaver
+
+- **Igangværende Opgaver**: Viser kun opgaver, der ikke er markeret som fuldført
+- **Afsluttede Opgaver**: Viser kun opgaver, der er markeret som fuldført
+
+## Forfattere
+
+Nanna og Laura - M6 eksamenprojekt
 
 
