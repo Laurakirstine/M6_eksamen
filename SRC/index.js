@@ -1,3 +1,11 @@
+//Henter Firebase funktioner
+import { 
+    onGetTasks, 
+    saveTask, 
+    deleteTask,
+    updateTask, 
+} from "./firebaseconfig.js";
+
 //Henter navigationsmenu
 fetch("../navigationsmenu.html")
   .then(response => response.text())
@@ -8,17 +16,8 @@ fetch("../navigationsmenu.html")
     }
   })
   .catch(error => console.error("Fejl ved indlæsning af menu:", error));
-
-//Henter Firebase funktioner
-import { 
-    onGetTasks, 
-    saveTask, 
-    deleteTask, 
-    getTask,
-    updateTask, 
-} from "./firebaseconfig.js";
  
-//Funktion til at opdatere status på en opgave
+//Funktion til at opdatere status på en specifik opgave
 const updateTaskStatus = (id, status) => {
     updateTask(id, { status });
 };
@@ -38,14 +37,14 @@ if (document.querySelector('h1') && document.querySelector('h1').textContent ===
     });
 }
 
-// hent og vis opgaver på opgaveplanner siden
+// Hent og vis opgaver på opgaveplanner.html, igangvaerende_opgaver.html og afsluttede_opgaver.html
 if (document.getElementById('tasks-list')) {
     const tasksList = document.getElementById('tasks-list');
-    let currentTasks = []; // Store tasks to apply sorting when dropdown changes
+    let currentTasks = []; // Holder styr på de aktuelt viste opgaver for sortering
     
-    // Sorting functions
+    // Håndter opgaver og opsæt drop-down muligheder for sortering
     const sortTasks = (tasks, sortType) => {
-        const tasksCopy = [...tasks]; // Create a copy to avoid mutating original
+        const tasksCopy = [...tasks]; // laver en kopi for at undgå at mutere originalen
     
         switch(sortType) {
             case 'alphabetical':
@@ -72,16 +71,15 @@ if (document.getElementById('tasks-list')) {
         }
     };
 
-    // Funktion til render tasks
+    // Funktion til visning af opgaver
     const renderTasks = (tasks) => {
-       /* console.log("Rendering tasks:", tasks); / Debug log */
-        tasksList.innerHTML = ''; // Clear existing content
+        tasksList.innerHTML = ''; // fjern eksisterende opgaver 
         
         tasks.forEach((task) => {
             const taskData = task;
             
             const taskElement = document.createElement('div');
-            taskElement.classList.add('task-item'); // Optional: Add a class for styling
+            taskElement.classList.add('task-item'); 
 
 
             if (taskData.status) {
@@ -110,7 +108,7 @@ if (document.getElementById('tasks-list')) {
 
         });
 
-        //Event listeners for status checkboxes
+        // Tilføj event listeners til status checkbox
         document.querySelectorAll('.status-checkbox').forEach(checkbox => {
             checkbox.addEventListener('change', (e) => {
                 const taskId = e.target.getAttribute('data-id');
@@ -119,22 +117,21 @@ if (document.getElementById('tasks-list')) {
             });
         });
 
-        // tilføj event listeners til delete knapper
+        // Tilføj event listeners til delete knapper
         document.querySelectorAll('.delete-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const taskId = e.target.getAttribute('data-id');
-                deleteTask(taskId); // This will trigger onGetTasks to re-render
+                deleteTask(taskId); 
             });
         });
     };
 
-    // Handle sort dropdown - moved OUTSIDE renderTasks
+    // Tilføj event listeners tildrop-down menu 
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
             const sortType = e.target.value;
             localStorage.setItem('taskSortPreference', sortType);
-            // Re-render with new sort order
             const sortedTasks = sortTasks(currentTasks, sortType);
             renderTasks(sortedTasks);
         });
@@ -142,7 +139,7 @@ if (document.getElementById('tasks-list')) {
     
     //Hent opdatering af opgavestatus
     onGetTasks((snapshot) => {
-        console.log("onGetTasks triggered, snapshot docs:", snapshot.docs.length); // Debug log
+        console.log("onGetTasks triggered, snapshot docs:", snapshot.docs.length); 
         let tasks = snapshot.docs.map(doc => ({ 
             id: doc.id, ...doc.data() 
         }));
@@ -159,7 +156,7 @@ if (document.getElementById('tasks-list')) {
             tasks = tasks.filter(task => task.status === true);
         }
 
-        currentTasks = tasks; // Store the filtered tasks
+        currentTasks = tasks; // Gem de filtrerede opgaver
         const sortPreference = document.getElementById('sort-select')?.value || 'none';
         tasks = sortTasks(tasks, sortPreference);
 

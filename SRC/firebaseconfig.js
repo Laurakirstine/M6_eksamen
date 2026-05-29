@@ -8,14 +8,11 @@ import {
   addDoc,
   deleteDoc,
   doc,
-  getDoc,
   updateDoc
 } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
 
-
-
-//Firebase configuration
+//Firebase konfiguration
 const firebaseConfig = {
   apiKey: "AIzaSyBlKdlqTVRtGWwu_JzuHhfCe5C8wiBbA7k",
   authDomain: "m6firebase-346b7.firebaseapp.com",
@@ -30,20 +27,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-// Collection reference
+// Kollektion reference i firebase
 const colRef = collection(db, "opgaver");
 
-// Get all documents
+// Hent alle dokumenter i kollektion "opgaver"
 getDocs(colRef)
     .then((snapshot) => {
         console.log(snapshot.docs);
     });
     
 /**
- * Save a New Task in Firestore
- * @param {string} opgavenavn the name of the Task
- * @param {string} beskrivelse the description of the Task
- * @param {Date} deadline the deadline of the Task
+ * Gem en ny opgave i Firestore
+ * @param {string} opgavenavn Navn på opgaven
+ * @param {string} beskrivelse Kort beskrivelse af opgaven
+ * @param {Date} deadline Deadline for opgaven
+ * @param {boolean} status Beskriver om opgaven er afsluttet eller ej
  */
 export const saveTask = (opgavenavn, beskrivelse, deadline, status) =>
   addDoc(collection(db, "opgaver"), 
@@ -58,12 +56,10 @@ export const onGetTasks = (callback) =>
   onSnapshot(collection(db, "opgaver"), callback);
 
 /**
- *
- * @param {string} id Task ID
+ * Håndtering af en opgave (slet eller opdater)
+ * @param {string} id Opgave ID
  */
 export const deleteTask = (id) => deleteDoc(doc(db, "opgaver", id));
-
-export const getTask = (id) => getDoc(doc(db, "opgaver", id));
 
 export const updateTask = (id, newFields) =>
   updateDoc(doc(db, "opgaver", id), newFields);
