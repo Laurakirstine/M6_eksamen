@@ -1,4 +1,5 @@
-# Navn: Opgaveplanner
+# Navn: Opgaveplanner 
+## Version 1.0
 
 ## Beskrivelse
 Dette er Nanna og Lauras projekt til M6 eksamen
