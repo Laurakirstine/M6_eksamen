@@ -21,6 +21,7 @@ Opgaveplanner indeholder følgende funktioner:
    - Alle opgaver
    - Igangværende opgaver
    - Afsluttede opgaver
+   - Tilføj opgave
 + Sortering af opgaver
    - Alfabetisk
    - Dato (stigende)
