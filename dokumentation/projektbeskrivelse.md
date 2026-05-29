@@ -20,9 +20,8 @@ Projektet planlægges og styres gennem gitHub, hvor begge gruppens medlemmer kan
 
 Foruden denne projektplan indgår også følgende dokumenter til overblik, samarbejdsstøtte og projektstyring:
 
-3 UML´er
+2 UML´er
   + Use Case
-  + Activity
   + Class
 
   Rollebeskrivelse  
