@@ -1,4 +1,4 @@
-# Projektplan
+# Projektbeskrivelse
 
 ## Projektets formål
 
