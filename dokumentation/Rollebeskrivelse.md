@@ -1,12 +1,12 @@
-#Rollebeskrivelse
+# Rollebeskrivelse
 
-##Generelle overvejelser
+## Generelle overvejelser
 
 Forud for opstart blev der ikke aftale specifikke roller, da vi begge ønskede at arbejde bredt med alle dele af opgaven. Derudover var det med projektets scope og størrelse ikke muligt at udelegere større funktioner eller specifikke områder af systemets opbygning. Derfor valgte vi at arbejde med delegering af enkelt opgaver, hvor vi løbende uddelte opgaver som blev assign´et gennem kanban-boardet. 
 
 Denne rollebeskrivelse er derfor lavet efter færdiggørelsen af projektet for at vise hvordan fordelingen reelt har set ud. Fordelingen kan også følges i roadmap´et i kanban-boardet
 
-##Faktisk rollefordeling
+## Faktisk rollefordeling
 
 + Opsætning af projektstyrring (Fælles) 
 + Opsætning af html strukturen (Laura)
